@@ -1,0 +1,84 @@
+<html>
+<head>
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.1.0.min.js"
+  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+  crossorigin="anonymous"></script>
+<body>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <style>
+        @font-face{
+             font-family: 'MyWebFont';
+             src:url('files/segoeui.ttf')  format('truetype');
+        }
+        *{
+            font-family:'MyWebFont';
+            margin: 0 0 0 0;
+        }
+        body{
+            background-image: url("files/wallpaper.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        #taskbar{
+            z-index:3;
+            position:fixed;
+            height:41px;
+            width:100%;
+            bottom:0;
+        }
+        #taskbarbg{
+            position:fixed;
+            height:41px;
+            width:100%;
+            opacity:0.5;
+            background-color:black;
+        }
+        #win10logo{
+            position:absolute;
+
+            height:40px;
+            width:auto;
+            transition: background 1s;
+        }
+        #win10logo:hover{
+            background-color:grey;
+        }
+        .app{
+            z-index:1;
+            font-size:12;
+            position:relative;
+            width:75;
+            height:auto;
+            color:white;
+        }
+        .window{
+            z-index:2;
+            position:fixed;
+            height:500px;
+            width:700px;
+            top:25%;
+            left:25%;
+            background-color:white;
+        }
+    </style>
+    <div class="window" id="vm_window"></div>
+    <div class="app" id="virtualmachines"><center><img src="files/rdp.png" width=75 height=auto><br>Virtual Machines</center></div>
+    <div class="app" id="webapps"><center><img src="files/app-service.png" width=55 height=auto ><br>WebApps</center></div>
+    <div id="taskbar"><div id="taskbarbg"></div><a id="hi"><img src="files/logo.png" id="win10logo"></a>
+    <script>
+        $("#vm_window").hide();
+        $( function() {
+            $( ".app" ).draggable({
+                scope: "first"
+            });
+            $( ".window" ).draggable({
+                scope: "first"
+            });
+         } );
+         $("#virtualmachines").click(function(){
+             console.log("clicked");
+             $("#vm_window").show();
+         })
+        </script>
